@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+
+{%block title %}Img 360°: Load{% endblock %}
+
+{% block body%}
+    <center>
+        <h1>Cargar imagen</h1>
+    </center>
+    <center>
+        <div class="row m-3">
+            <div class='col-sm-12 col-md-6 col-lg-4 col-xl-4'>
+                <center>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                        <br>
+                    </form>
+                </center>
+            </div>
+        
+            <div class='col-sm-12 col-md-6 col-lg-8 col-xl-8'>
+                <img src="{{image.image2analysis.url}}"  align="center" width = 500>
+            </div>
+        </div>
+    </center>
+    
+{% endblock %}

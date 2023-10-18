@@ -1,0 +1,51 @@
+{% extends "./base.html" %}
+
+{%block title %}Img 360°: Color{% endblock %}
+{% block body%}
+    <center>
+        <h1>Color Range</h1>
+    </center>
+    <center>
+        <div class="row m-3">
+            <div style='text-align:right' class='col-sm-12 col-md-6 col-lg-4 col-xl-4' id='app'>
+                <left>
+                    <form method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <!-- <p>
+                            <label for="id_hu">Hue Top:</label> 
+                            <input type="range" onchange="form.submit();" name="hu"
+                                    min="0" max="180" step="1" id="id_hu"
+                                    :value=huValue v-on:input="huValue = $event.target.value" >
+                        </p>
+                        <p>
+                            <input  type="number" name="huBox" min="0" max="180" step="1" id="id_huBox" 
+                                    :value=huValue v-on:input="huValue = $event.target.value">
+                        </p> -->
+                        {{form.as_p}}
+                        <!-- <button type="submit" class="btn btn-secondary">Submit</button> -->
+                        <br>
+                    </form>
+                </left>
+            </div>
+        
+            <div class='col-sm-12 col-md-6 col-lg-8 col-xl-8'>
+                <img src="{{image.image2analysis.url}}"  align="center" width = 500 >
+            </div>
+        </div>
+    </center>
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                huValue: {{values.hu}},
+                suValue: {{values.su}},
+                vuValue: {{values.vu}},
+                hlValue: {{values.hl}},
+                slValue: {{values.sl}},
+                vlValue: {{values.vl}},
+            }
+
+        })
+
+    </script>
+{% endblock %}
